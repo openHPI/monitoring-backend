@@ -1,0 +1,6 @@
+version: '3'
+services:
+  notification-service:
+    image: friedow/monitoring-backend:latest
+    ports:
+      - 3000:3000

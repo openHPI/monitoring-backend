@@ -1,0 +1,12 @@
+# Node.js
+node_modules
+package-lock.json
+
+# Typescript
+build
+
+# System config
+.DS_Store
+
+# Development tools
+.vscode
