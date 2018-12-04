@@ -1,4 +1,6 @@
 # Monitoring Backend
+![alt text](https://img.shields.io/travis/com/openHPI/monitoring-backend.svg "Travis Build") 
+
 Backend service for the openHPI monitoring dashboard to process events from Kapacitor and power the frontend.
 
 ## Deployment
