@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
 import helloWorldRouter from '@/routes/helloWorld';
 
+const swaggerConfig = require('@/swagger.json');
+
 function startApiServer() {
   const app: express.Application = express();
   const port: string = process.env.PORT || '3000';
@@ -16,7 +18,7 @@ function startApiServer() {
     res.send('hello world!');
   });
 
-  app.use('/docs', swaggerUi.serve, swaggerUi.setup(require('../swagger.json')));
+  app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 
   app.listen(port);
 }
