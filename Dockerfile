@@ -5,7 +5,7 @@ RUN npm install && \
     npm run build && \
     mkdir ./builder && \
     mv ./build ./builder/build && \
-    mv ./swagger.json ./builder/swagger.json && \
+    mv ./tsconfig.json ./builder/tsconfig.json && \
     mv ./package.json ./builder/package.json
 
 FROM node:10-alpine
