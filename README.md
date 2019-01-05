@@ -27,6 +27,25 @@ Backend service for the openHPI monitoring dashboard to process events from Kapa
     npm start
     ```
 
+## Building Docker Images manually
+
+1. Login to your docker account
+    ```
+    docker login
+    ```
+1. Build the image
+    ```
+    docker build -t friedow/monitoring-backend:latest .
+    ```
+1. Test the image
+    ```
+    docker run -p 3000:3000 friedow/monitoring-backend:latest
+    ```
+1. Push the image
+    ```
+    docker push friedow/monitoring-backend:latest
+    ```
+
 ## Testing
 
 Simply run `npm test` and all your tests in the `test/` directory will be run.
