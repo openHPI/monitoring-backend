@@ -5,12 +5,12 @@ Backend service for the openHPI monitoring dashboard to process events from Kapa
 
 ## Deployment
 
-1. Download the <a href="https://github.com/openHPI/monitoring-backend/blob/master/docker-compose.yml" download>docker-compose.yml</a>.
+1. Please follow the deployment instructions under https://github.com/openHPI/monitoring-frontend#deployment.
 
 1. Deploy the service using docker compose / stack: 
   ```docker-compose up``` or ```docker stack -c docker-compose.yml```.
 
-## Getting Started
+## Development
 
 1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
 1. Clone the repository
