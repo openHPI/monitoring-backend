@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
 import helloWorldRouter from '@/routes/helloWorld';
+import alertRouter from '@/routes/alert';
 
 const swaggerConfig = require('@/swagger.json');
 
@@ -11,6 +12,8 @@ function startApiServer() {
 
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
+
+  app.use('/alerts', alertRouter);
 
   app.use('/hello-world', helloWorldRouter);
 
