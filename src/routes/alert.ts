@@ -3,14 +3,20 @@ import AlertService from '@/services/AlertService';
 import Alert from '@/interfaces/Alert';
 
 const router: express.Router = express.Router();
-const alertService: AlertService = new AlertService();
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const alert: Alert = {
-    content: req.body,
+    alertId: req.body.id,
+    message: req.body.message,
+    details: req.body.details,
+    time: req.body.time,
+    duration: req.body.duration,
+    level: req.body.level,
+    data: req.body.data,
+    recoverable: req.body.recoverable,
   };
 
-  alertService.save(alert);
+  await AlertService.save(alert);
 
   res.send('Alert saved.');
 });
