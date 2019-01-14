@@ -5,10 +5,7 @@ Backend service for the openHPI monitoring dashboard to process events from Kapa
 
 ## Deployment
 
-1. Please follow the deployment instructions under https://github.com/openHPI/monitoring-frontend#deployment.
-
-1. Deploy the service using docker compose / stack: 
-  ```docker-compose up``` or ```docker stack -c docker-compose.yml```.
+1. Please follow the deployment instructions under https://github.com/openHPI/monitoring-analytics#deployment.
 
 ## Development
 
