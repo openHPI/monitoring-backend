@@ -1,3 +1,10 @@
 export default interface Alert {
-    content: string;
+    alertId: string;
+    message: string;
+    details: string;
+    time: string;
+    duration: number;
+    level: string;
+    data: any;
+    recoverable: boolean;
 }
