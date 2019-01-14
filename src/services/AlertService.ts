@@ -1,8 +1,12 @@
 import Alert from '@/interfaces/Alert';
-import winston from 'winston';
+import AlertModel from '@/models/alert';
 
 export default class AlertService {
   // region public static methods
+  public static async save(alert: Alert) {
+    const alertModel = new AlertModel(alert);
+    await alertModel.save();
+  }
   // endregion
 
   // region private static methods
@@ -18,10 +22,6 @@ export default class AlertService {
   // endregion
 
   // region public methods
-  public save(alert: Alert) {
-    // Save alert in database
-    winston.info(alert);
-  }
   // endregion
 
   // region private methods
