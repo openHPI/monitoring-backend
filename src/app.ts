@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
 import helloWorldRouter from '@/routes/helloWorld';
@@ -26,4 +27,8 @@ function startApiServer() {
   app.listen(port);
 }
 
-startApiServer();
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', startApiServer);
+
+mongoose.connect(`mongodb://${process.env.MONGO_HOST || 'localhost'}/monitoring`);
