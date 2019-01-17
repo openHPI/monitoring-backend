@@ -6,7 +6,7 @@ const router: express.Router = express.Router();
 
 router.post('/', async (req, res) => {
   const alert: Alert = {
-    alertId: req.body.id,
+    alertId: req.body.alertId,
     message: req.body.message,
     details: req.body.details,
     time: req.body.time,
@@ -19,6 +19,11 @@ router.post('/', async (req, res) => {
   await AlertService.save(alert);
 
   res.send('Alert saved.');
+});
+
+router.get('/', async (req, res) => {
+  const alerts = await AlertService.getAlerts();
+  res.send(alerts);
 });
 
 export default router;
