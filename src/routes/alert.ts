@@ -21,4 +21,9 @@ router.post('/', async (req, res) => {
   res.send('Alert saved.');
 });
 
+router.get('/', async (req, res) => {
+  const alerts = await AlertService.getAlerts();
+  res.send(alerts);
+});
+
 export default router;
