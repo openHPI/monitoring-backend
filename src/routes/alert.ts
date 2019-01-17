@@ -6,7 +6,7 @@ const router: express.Router = express.Router();
 
 router.post('/', async (req, res) => {
   const alert: Alert = {
-    alertId: req.body.id,
+    alertId: req.body.alertId,
     message: req.body.message,
     details: req.body.details,
     time: req.body.time,
