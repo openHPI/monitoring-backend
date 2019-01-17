@@ -13,7 +13,7 @@ const alertSchema = new Schema({
     level: String,
     data: Object,
     recoverable: Boolean,
-});
+}, { capped: { size: 100000, max: 50 } });
 
 const alertModel: Model<IAlertModel> = model('Alert', alertSchema);
 
