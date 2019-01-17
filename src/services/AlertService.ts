@@ -7,6 +7,15 @@ export default class AlertService {
     const alertModel = new AlertModel(alert);
     await alertModel.save();
   }
+
+  public static async getAlerts(): Promise<Alert[]> {
+    const alerts = await AlertModel.find();
+    if (!alerts) {
+      return [];
+    }
+
+    return alerts;
+  }
   // endregion
 
   // region private static methods
