@@ -10,10 +10,6 @@ export default class AlertService {
 
   public static async getAlerts(): Promise<Alert[]> {
     const alerts = await AlertModel.find();
-    if (!alerts) {
-      return [];
-    }
-
     return alerts;
   }
   // endregion
