@@ -1,7 +1,7 @@
 export default interface Alert {
     alertId: string;
     message: string;
-    details: string;
+    details: any;
     time: string;
     duration: number;
     level: string;
