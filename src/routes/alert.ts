@@ -2,13 +2,15 @@ import express from 'express';
 import AlertService from '@/services/AlertService';
 import Alert from '@/interfaces/Alert';
 
+const parseJSON = (a: string) => JSON.parse(a.replace(/&#34;/g, '"'));
+
 const router: express.Router = express.Router();
 
 router.post('/', async (req, res) => {
   const alert: Alert = {
     alertId: req.body.id,
     message: req.body.message,
-    details: req.body.details,
+    details: parseJSON(req.body.details),
     time: req.body.time,
     duration: req.body.duration,
     level: req.body.level,
