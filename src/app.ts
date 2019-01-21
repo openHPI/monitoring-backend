@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
+import cors from 'cors';
 import helloWorldRouter from '@/routes/helloWorld';
 import alertRouter from '@/routes/alert';
 
@@ -13,6 +14,8 @@ function startApiServer() {
 
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
+
+  app.use(cors());
 
   app.use('/alerts', alertRouter);
 
