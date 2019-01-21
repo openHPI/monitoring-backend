@@ -23,9 +23,11 @@
   },
   "homepage": "https://github.com/openHPI/monitoring-backend",
   "dependencies": {
+    "@types/cors": "^2.8.4",
     "@types/mongoose": "^5.3.7",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.3",
     "mongoose": "^5.4.3",
     "swagger-ui-express": "^3.0.10",
