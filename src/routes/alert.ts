@@ -23,8 +23,10 @@ router.post('/', async (req, res) => {
   res.send('Alert saved.');
 });
 
-router.get('/', async (req, res) => {
-  const alerts = await AlertService.getAlerts();
+router.get('/:topic?', async (req, res) => {
+  const topic = req.params.topic;
+
+  const alerts = await AlertService.getAlerts(topic);
   res.send(alerts);
 });
 

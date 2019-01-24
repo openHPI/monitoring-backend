@@ -8,8 +8,10 @@ export default class AlertService {
     await alertModel.save();
   }
 
-  public static async getAlerts(): Promise<Alert[]> {
-    const alerts = await AlertModel.find();
+  public static async getAlerts(topic: string): Promise<Alert[]> {
+    const condition = topic ? { 'details.TaskName': topic } : {};
+
+    const alerts = await AlertModel.find(condition);
     return alerts;
   }
   // endregion
