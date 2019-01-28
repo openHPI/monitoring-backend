@@ -24,10 +24,11 @@ router.post('/:category', async (req, res) => {
   res.send('Alert saved.');
 });
 
-router.get('/:category?', async (req, res) => {
+router.get('/:category?/:topic?', async (req, res) => {
   const category = req.params.category;
+  const topic = req.params.topic;
 
-  const alerts = await AlertService.getAlerts(category);
+  const alerts = await AlertService.getAlerts(category, topic);
   res.send(alerts);
 });
 
