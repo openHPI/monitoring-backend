@@ -6,6 +6,7 @@ export interface IAlertModel extends Alert, Document {
 
 const alertSchema = new Schema({
     alertId: String,
+    category: String,
     message: String,
     details: Object,
     time: Date,

@@ -6,9 +6,10 @@ const parseJSON = (a: string) => JSON.parse(a.replace(/&#34;/g, '"'));
 
 const router: express.Router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/:category', async (req, res) => {
   const alert: Alert = {
     alertId: req.body.id,
+    category: req.params.category,
     message: req.body.message,
     details: parseJSON(req.body.details),
     time: req.body.time,
@@ -23,10 +24,11 @@ router.post('/', async (req, res) => {
   res.send('Alert saved.');
 });
 
-router.get('/:topic?', async (req, res) => {
+router.get('/:category?/:topic?', async (req, res) => {
+  const category = req.params.category;
   const topic = req.params.topic;
 
-  const alerts = await AlertService.getAlerts(topic);
+  const alerts = await AlertService.getAlerts(category, topic);
   res.send(alerts);
 });
 
