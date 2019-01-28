@@ -8,8 +8,8 @@ export default class AlertService {
     await alertModel.save();
   }
 
-  public static async getAlerts(topic: string): Promise<Alert[]> {
-    const condition = topic ? { 'details.TaskName': topic } : {};
+  public static async getAlerts(category: string): Promise<Alert[]> {
+    const condition = category ? { category } : {};
 
     const alerts = await AlertModel.find(condition);
     return alerts;
