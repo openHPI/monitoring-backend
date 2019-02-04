@@ -1,9 +1,9 @@
 import axios from 'axios';
 import config from '@/config';
 
-export default class AlertService {
+export default class EventService {
   // region public static methods
-  public static async getAlerts(topic: string): Promise<any> {
+  public static async getEvents(topic: string): Promise<any> {
     try {
       const response = await axios.get(`${config.kapacitorURL}/kapacitor/v1/alerts/topics/${topic}/events`);
       return response.data;

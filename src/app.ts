@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
 import cors from 'cors';
 import helloWorldRouter from '@/routes/helloWorld';
-import alertRouter from '@/routes/alert';
+import eventRouter from '@/routes/event';
 
 const swaggerConfig = require('@/swagger.json');
 
@@ -17,7 +17,7 @@ function startApiServer() {
 
   app.use(cors());
 
-  app.use('/alerts', alertRouter);
+  app.use('/events', eventRouter);
 
   app.use('/hello-world', helloWorldRouter);
 
