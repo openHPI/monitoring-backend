@@ -1,16 +1,15 @@
-import Alert from '@/interfaces/Alert';
-import AlertModel from '@/models/alert';
+import axios from 'axios';
+import config from '@/config';
 
 export default class AlertService {
   // region public static methods
-  public static async save(alert: Alert) {
-    const alertModel = new AlertModel(alert);
-    await alertModel.save();
-  }
-
-  public static async getAlerts(category = { $ne: null }, topic = { $ne: null }): Promise<Alert[]> {
-    const alerts = await AlertModel.find({ category, 'details.TaskName': topic });
-    return alerts;
+  public static async getAlerts(topic: string): Promise<any> {
+    try {
+      const response = await axios.get(`${config.kapacitorURL}/kapacitor/v1/alerts/topics/${topic}/events`);
+      return response.data;
+    } catch (error) {
+      return error.response.data;
+    }
   }
   // endregion
 
