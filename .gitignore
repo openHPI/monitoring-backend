@@ -10,4 +10,6 @@ build
 
 # Development tools
 .vscode
+
+# Source files
 src/config.ts
