@@ -13,7 +13,6 @@ export default class EventService {
 
       responseData.events.forEach((event: any) => {
         event.state.details = parseJSON(event.state.details);
-        console.log(event.state.details);
       });
 
       return responseData;
