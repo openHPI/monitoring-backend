@@ -5,7 +5,7 @@ const parseJSON = (a: string) => JSON.parse(a.replace(/&#34;/g, '"'));
 
 export default class EventService {
   // region public static methods
-  public static async getEvents(topic: string, minLevel: string): Promise<any> {
+  public static async getEvents(topic: string, minLevel: string = 'OK'): Promise<any> {
     try {
       const response = await axios.get(`${config.kapacitorURL}/kapacitor/v1/alerts/topics/${topic}/events?min-level=${minLevel}`);
 
