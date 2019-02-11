@@ -1,3 +1,3 @@
 export default {
-    kapacitorURL: `${process.env.KAPACITOR_HOST || 'localhost'}:9092`,
+    kapacitorURL: `http://${process.env.KAPACITOR_HOST || 'localhost'}:9092`,
 };
