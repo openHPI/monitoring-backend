@@ -20,11 +20,11 @@ export default class EventService {
 
       const snoozedEvents = await SnoozedEventModel.find();
 
-      responseData.events.forEach((event: any, index: number, array: any[]) => {
+      responseData.events.forEach((event: any, index: number, events: any[]) => {
         event.state.details = parseJSON(event.state.details);
 
         if (snoozedEvents.some((snoozedEvent) => snoozedEvent.eventId === event.id)) {
-          array.splice(index, 1);
+          events.splice(index, 1);
         }
       });
 
