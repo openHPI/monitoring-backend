@@ -12,7 +12,7 @@ export default class EventService {
     await snoozedEventModel.save();
   }
 
-  public static async getEvents(topic: string, minLevel: string): Promise<any> {
+  public static async getEvents(topic: string, minLevel: string = 'OK'): Promise<any> {
     try {
       const response = await axios.get(`${config.kapacitorURL}/kapacitor/v1/alerts/topics/${topic}/events?min-level=${minLevel}`);
 
