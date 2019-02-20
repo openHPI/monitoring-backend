@@ -21,6 +21,14 @@ export default class EventService {
       const snoozedEvents = await SnoozedEventModel.find();
 
       responseData.events.forEach((event: any, index: number, events: any[]) => {
+        const messageElements = event.state.message.split('@@@');
+
+        if (messageElements.length === 3) {
+          event.state.title = messageElements[0];
+          event.state.subtitle = messageElements[1];
+          event.state.subsubtitle = messageElements[2];
+        }
+
         event.state.details = parseJSON(event.state.details);
 
         if (snoozedEvents.some((snoozedEvent) => snoozedEvent.eventId === event.id)) {
