@@ -27,6 +27,10 @@ export default class EventService {
           event.state.title = messageElements[0];
           event.state.subtitle = messageElements[1];
           event.state.subsubtitle = messageElements[2];
+        } else {
+          event.state.title = event.state.message;
+          event.state.subtitle = '';
+          event.state.subsubtitle = '';
         }
 
         event.state.details = parseJSON(event.state.details);
