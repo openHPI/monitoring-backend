@@ -12,6 +12,10 @@ export default class EventService {
     await snoozedEventModel.save();
   }
 
+  public static async unsnoozeEvent(eventId: string) {
+    await SnoozedEventModel.remove({ eventId });
+  }
+
   public static async getEvents(topic: string, minLevel: string = 'OK'): Promise<any> {
     try {
       const response = await axios.get(`${config.kapacitorURL}/kapacitor/v1/alerts/topics/${topic}/events?min-level=${minLevel}`);
@@ -36,7 +40,9 @@ export default class EventService {
         event.state.details = parseJSON(event.state.details);
 
         if (snoozedEvents.some((snoozedEvent) => snoozedEvent.eventId === event.id)) {
-          events.splice(index, 1);
+          event.state.wasSnoozed = true;
+        } else {
+          event.state.wasSnoozed = false;
         }
       });
 
