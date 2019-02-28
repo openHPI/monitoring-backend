@@ -1,4 +1,4 @@
 export default interface SnoozedEvent {
-    createdAt: Date;
+    expirationDate: Date;
     eventId: string;
 }
