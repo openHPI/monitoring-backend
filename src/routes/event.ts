@@ -4,15 +4,26 @@ import SnoozedEvent from '@/interfaces/SnoozedEvent';
 
 const router: express.Router = express.Router();
 
-router.get('/:id/snooze', async (req, res) => {
+router.post('/snooze', async (req, res) => {
+  const expirationDate = new Date();
+  expirationDate.setDate(expirationDate.getDate() + req.body.days);
+
   const snoozedEvent: SnoozedEvent = {
-    createdAt: new Date(),
-    eventId: req.params.id,
+    expirationDate,
+    eventId: req.body.eventId,
   };
 
   await EventService.snoozeEvent(snoozedEvent);
 
   res.send('Event snoozed.');
+});
+
+router.post('/unsnooze', async (req, res) => {
+  const eventId = req.body.eventId;
+
+  await EventService.unsnoozeEvent(eventId);
+
+  res.send('Event unsnoozed.');
 });
 
 router.get('/:topic', async (req, res) => {

@@ -5,7 +5,7 @@ export interface ISnoozedEventModel extends SnoozedEvent, Document {
 }
 
 const snoozedEventSchema = new Schema({
-    createdAt: { type: Date, expires: 3600 },
+    expirationDate: { type: Date, expires: 1 },
     eventId: String,
 });
 
