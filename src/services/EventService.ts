@@ -5,6 +5,17 @@ import SnoozedEvent from '@/interfaces/SnoozedEvent';
 
 const parseJSON = (a: string) => JSON.parse(a.replace(/&#34;/g, '"'));
 
+interface Levels {
+  [index: string]: number;
+}
+
+const LEVELS: Levels = {
+  INFO: 0,
+  OK: 1,
+  WARNING: 2,
+  CRITICAL: 3,
+};
+
 export default class EventService {
   // region public static methods
   public static async snoozeEvent(snoozedEvent: SnoozedEvent) {
@@ -18,11 +29,13 @@ export default class EventService {
 
   public static async getEvents(topic: string, minLevel: string = 'OK'): Promise<any> {
     try {
-      const response = await axios.get(`${config.kapacitorURL}/kapacitor/v1/alerts/topics/${topic}/events?min-level=${minLevel}`);
+      const response = await axios.get(`${config.kapacitorURL}/kapacitor/v1/alerts/topics/${topic}/events`);
 
       const responseData = response.data;
 
       const snoozedEvents = await SnoozedEventModel.find();
+
+      responseData.events = responseData.events.filter((event: any) => LEVELS[event.state.level] >= LEVELS[minLevel]);
 
       responseData.events.forEach((event: any, index: number, events: any[]) => {
         const messageElements = event.state.message.split('@@@');
